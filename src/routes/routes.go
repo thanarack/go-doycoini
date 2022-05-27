@@ -11,7 +11,7 @@ var controller controllers.Export
 
 func (c Export) Routes(api fiber.Router) {
 	api.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World")
+		return c.SendString("Hello, Worlds")
 	})
 
 	api.Get("/tokens", controller.TokensControllers)
