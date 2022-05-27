@@ -19,5 +19,6 @@ func (c Export) TokensControllers(ctf *fiber.Ctx) error {
 
 	data, _ := c.Response(tokens, "200", "Get tokens successfully")
 
+	ctf.SendStatus(200)
 	return ctf.Send(data)
 }

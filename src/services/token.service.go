@@ -31,7 +31,7 @@ func (c Export) ListTokens() ([]models.Tokens, error) {
 		var result bson.Raw
 		cursor.Decode(&result)
 		// Destruction and append the result to the data.
-		tokenValue := models.Tokens{
+		tokenAttribute := models.Tokens{
 			ID:           result.Lookup("_id").ObjectID(),
 			Token:        result.Lookup("token").StringValue(),
 			Symbol:       result.Lookup("symbol").StringValue(),
@@ -43,7 +43,7 @@ func (c Export) ListTokens() ([]models.Tokens, error) {
 			CreatedAt:    result.Lookup("created_at").Time(),
 			UpdatedAt:    result.Lookup("updated_at").Time(),
 		}
-		data = append(data, tokenValue)
+		data = append(data, tokenAttribute)
 	}
 	if err := cursor.Err(); err != nil {
 		log.Fatal(err)
